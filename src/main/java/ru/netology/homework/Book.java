@@ -3,7 +3,7 @@ package ru.netology.homework;
 public class Book extends Product {
     public String author;
 
-    public Book () {
+    public Book() {
 
     }
 
@@ -18,5 +18,20 @@ public class Book extends Product {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search) || getAuthor().equalsIgnoreCase(search);
+        // если правая часть выражения вернула false, то вычисляется левая часть
+        //левая часть - поиск по автору, игнорируя
+//        if (super.matches(search)) {
+//            return true;
+//        }
+//        if (search.matches(getAuthor())) {
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 }
