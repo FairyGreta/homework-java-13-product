@@ -16,7 +16,17 @@ public class ProductRepository {
         return products;
     }
 
-    public void removeById(int id) {
+    public Product findById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public Product[] removeById(int id) {
+        if (findById(id) == null) throw new NotFoundException("Ваш ID " + id + " не найден. Пожалуйста, попробуйте снова");
         Product[] tmp = new Product[products.length - 1];
         int index = 0;
         for (Product product : products) {
@@ -26,6 +36,7 @@ public class ProductRepository {
             }
         }
         products = tmp;
+        return products;
     }
 
     public Product[] getItems() {
