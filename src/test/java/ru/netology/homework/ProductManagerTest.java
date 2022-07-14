@@ -24,13 +24,13 @@ public class ProductManagerTest {
         manager.add(smartphone2);
     }
 
-    @Test
-    public void shouldFindAuthor() {
-        Product[] expected = {book3};
-        Product[] actual = manager.searchBy("А.С. Пушкин");
-
-        assertArrayEquals(expected, actual);
-    }
+//    @Test
+//    public void shouldFindAuthor() {
+//        Product[] expected = {book3};
+//        Product[] actual = manager.searchBy("А.С. Пушкин");
+//
+//        assertArrayEquals(expected, actual);
+//    }
 
     @Test
     public void shouldFindNameBook() {
@@ -40,13 +40,13 @@ public class ProductManagerTest {
         assertArrayEquals(expected,actual);
     }
 
-    @Test
-    public void shouldFindManufacturerSmartphone() {
-        Product[] expected = {smartphone2};
-        Product[] actual = manager.searchBy("Nokia Corporation");
-
-        assertArrayEquals(expected, actual);
-    }
+//    @Test
+//    public void shouldFindManufacturerSmartphone() {
+//        Product[] expected = {smartphone2};
+//        Product[] actual = manager.searchBy("Nokia Corporation");
+//
+//        assertArrayEquals(expected, actual);
+//    }
 
     @Test
     public void shouldFindNameSmartphone() {
