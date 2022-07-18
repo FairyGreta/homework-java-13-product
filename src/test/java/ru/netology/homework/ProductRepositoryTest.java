@@ -15,6 +15,21 @@ public class ProductRepositoryTest {
     Product smartphone1 = new Smartphone(4, "Samsung A52", 25000, "Samsung Group");
     Product smartphone2 = new Smartphone(5, "Nokia 8", 18000, "Nokia Corporation");
 
+    // тест на несуществующий id. Основная задача 14
+    @Test
+    public void shouldCheckExceptionNotExistingElement() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.save(book1);
+        repo.save(book2);
+        repo.save(book3);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(-100);
+        });
+    }
+
+    // Тест на существующий ID. К основной задаче 14
     @Test
     public void shouldRemoveById() {
         ProductRepository repo = new ProductRepository();
@@ -27,10 +42,12 @@ public class ProductRepositoryTest {
         repo.removeById(book2.getId());
 
         Product[] expected = {book1, book3, smartphone1, smartphone2};
-        Product[] actual = repo.getItems();
+        Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+
 
     @Test
     public void shouldSetId() {

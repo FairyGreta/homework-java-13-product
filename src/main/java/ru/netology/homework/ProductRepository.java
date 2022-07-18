@@ -4,6 +4,7 @@ public class ProductRepository {
     protected Product[] products = new Product[0];
 
     public void save(Product product) {
+        //if (product.getId() == id) throw new AlreadyExistsException("Такой ID уже существует");
         Product[] tmp = new Product[products.length + 1];
         for (int i = 0; i < products.length; i++) {
             tmp[i] = products[i];
@@ -16,7 +17,17 @@ public class ProductRepository {
         return products;
     }
 
-    public void removeById(int id) {
+    public Product findById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public Product[] removeById(int id) {
+        if (findById(id) == null) throw new NotFoundException("Ваш ID " + id + " не найден. Пожалуйста, попробуйте снова");
         Product[] tmp = new Product[products.length - 1];
         int index = 0;
         for (Product product : products) {
@@ -26,6 +37,7 @@ public class ProductRepository {
             }
         }
         products = tmp;
+        return products;
     }
 
     public Product[] getItems() {

@@ -5,7 +5,7 @@ public class Product {
     protected String name;
     protected int price;
 
-    public Product () {
+    public Product() {
 
     }
 
@@ -39,4 +39,12 @@ public class Product {
         this.price = price;
     }
 
+    public boolean matches(String search) {
+        return name.equalsIgnoreCase(search);
+//        if (search.matches(name)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+    }
 }
