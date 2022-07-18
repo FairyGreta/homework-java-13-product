@@ -11,10 +11,10 @@ public class ProductManager {
         repo.save(product);
     }
 
-    public Product[] searchBy(String text) {
+    public Product[] searchBy(String search) {
         Product[] result = new Product[0];
         for (Product product : repo.findAll()) {
-            if (matches(product, text)) {
+            if (product.matches(search)) {
                 Product[] tmp = new Product[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = product;
@@ -22,18 +22,5 @@ public class ProductManager {
             }
         }
         return result;
-    }
-
-    public boolean matches(Product product, String search) {
-        if (product.getName().contains(search)) {
-            return true;
-        }
-        if (product instanceof Book) {
-            return ((Book) product).getAuthor().equalsIgnoreCase(search);
-        }
-        if (product instanceof Smartphone) {
-            return ((Smartphone) product).getManufacturer().equalsIgnoreCase(search);
-        }
-        return false;
     }
 }
