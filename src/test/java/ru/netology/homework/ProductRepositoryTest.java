@@ -15,7 +15,7 @@ public class ProductRepositoryTest {
     Product smartphone1 = new Smartphone(4, "Samsung A52", 25000, "Samsung Group");
     Product smartphone2 = new Smartphone(5, "Nokia 8", 18000, "Nokia Corporation");
 
-    // тест на несуществующий id
+    // тест на несуществующий id. Основная задача 14
     @Test
     public void shouldCheckExceptionNotExistingElement() {
         ProductRepository repo = new ProductRepository();
@@ -29,7 +29,7 @@ public class ProductRepositoryTest {
         });
     }
 
-    // Тест на существующий ID
+    // Тест на существующий ID. К основной задаче 14
     @Test
     public void shouldRemoveById() {
         ProductRepository repo = new ProductRepository();
@@ -46,6 +46,8 @@ public class ProductRepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+
 
     @Test
     public void shouldSetId() {

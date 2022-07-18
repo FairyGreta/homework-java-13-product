@@ -3,7 +3,8 @@ package ru.netology.homework;
 public class ProductRepository {
     protected Product[] products = new Product[0];
 
-    public void save(Product product) {
+    public void save(int id, Product product) {
+        if (product.getId() == id) throw new AlreadyExistsException("Такой ID уже существует");
         Product[] tmp = new Product[products.length + 1];
         for (int i = 0; i < products.length; i++) {
             tmp[i] = products[i];
