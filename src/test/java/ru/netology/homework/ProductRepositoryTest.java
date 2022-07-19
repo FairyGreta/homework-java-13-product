@@ -29,7 +29,7 @@ public class ProductRepositoryTest {
         });
     }
 
-    // Тест на существующий ID. К основной задаче 14
+    // Тест на существующий ID. К основной задаче 14 и дополнительной (проверять успешность добавления элемента)
     @Test
     public void shouldRemoveById() {
         ProductRepository repo = new ProductRepository();
@@ -45,6 +45,18 @@ public class ProductRepositoryTest {
         Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldCheckAlreadyExistsException () {
+        ProductRepository repo = new ProductRepository();
+        repo.save(book1);
+        repo.save(book2);
+        repo.save(book3);
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            repo.save(book2);
+        });
     }
 
 
