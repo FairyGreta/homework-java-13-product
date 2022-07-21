@@ -20,4 +20,5 @@ public class Smartphone extends Product {
         this.manufacturer = manufacturer;
     }
 
+
 }

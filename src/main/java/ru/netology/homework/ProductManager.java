@@ -27,13 +27,8 @@ public class ProductManager {
     public boolean matches(Product product, String search) {
         if (product.getName().contains(search)) {
             return true;
+        } else {
+            return false;
         }
-        if (product instanceof Book) {
-            return ((Book) product).getAuthor().equalsIgnoreCase(search);
-        }
-        if (product instanceof Smartphone) {
-            return ((Smartphone) product).getManufacturer().equalsIgnoreCase(search);
-        }
-        return false;
     }
 }
